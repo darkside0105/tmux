@@ -1,0 +1,56 @@
+Tmux Tutorial
+
+sudo apt install tmux
+
+tmux new -s <Session>
+tmux attach -t <target_session>
+tmux ls (To list all the sessions)
+Ctrl + b (default Prefix)
+----------------Change conf(~/.tmux.conf)----
+#Remap prefix to screens
+set -g prefix C-a
+bind C-a send-prefix
+unbind C-b
+
+#Quality of life stuff
+set -g allow-rename off
+
+##Join windows
+bind-key j command-prompt -p "join pane from:" "join-pane -s '%%'"
+bind-key s command-prompt -p "send pane to:" "join-pane -t '%%'"
+
+#search Mode VI
+set-window-option -g mode-keys vi
+-------------------------------------------------
+(prefix) :new (To launch a new session for another session)
+Prefix ( (previous session)
+Prefix ) (next session)
+(prefix) , (rename pane)
+(prefix) <num_of_pane> (To change windows)
+(prefix) s -> num_of_pane (To attach pane_no to current pane)
+(prefix) j -> num_of_pane (To attach pane_no to current pane)
+(prefix) % (For Horizental Splitting of pane)
+(prefix) " (For vertical Splitting of pane)
+(prefix) <Arrow keys> (To move cursor across the panes)
+(prefix)+<Arrow key> (To resize that current pane)
+(prefix) z (To zoom/unzoom & focus_fullscreen/min_size the pane)
+(prefix) { (To move pane to its opposite direction)
+(prefix) } (To move pane to its opposite direction)
+(prefix) <space> (To change the layout order of panes)
+(prefix) t (Shows Time in that pane)
+(prefix) ? (shows keys can be used in tmux)
+------
+(prefix) [ (To copy from terminal)
+space (To select region for copying)
+Enter (To copy the selected region)
+? (If you want to search anything)
+(prefix) ] (To paste the copied text anywhere)
+------------------------------------------------------
+Command Hacks
+-----
+ctrl+a+ctrl+a (To the start of line)
+ctrl+e (To the end of line)
+alt+. (To search for previous used words)
+ctrl+<Arrow> (To move cursor for start/end of each word in a line)
+
+
